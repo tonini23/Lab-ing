@@ -1,0 +1,19 @@
+{
+  "name": "esercizio-3",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "tonini23",
+  "type": "module",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "express": "^5.2.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "Lab-ing"
+  }
+}
