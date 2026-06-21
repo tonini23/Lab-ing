@@ -7,16 +7,16 @@ const Home = {
     template:  `
     <h2>Ultimi Articoli</h2>
     <article v-for="articolo in datiArticoli">
-        <img v-bind:src="articolo['Immagine']" alt="" />
-        <h3>{{articolo["Titolo"]}}</h3>
-        <p>{{articolo["Autore"]}} - {{articolo["Data"]}}</p>
-        <p>{{articolo["Testo"]}}</p>
+        <img v-bind:src="'/img/'+ articolo['imgarticolo']" alt="" />
+        <h3>{{articolo["titoloarticolo"]}}</h3>
+        <p>{{articolo["nome"]}} - {{articolo["dataarticolo"]}}</p>
+        <p>{{articolo["anteprimaarticolo"]}}</p>
         <a href="#">Leggi tutto</a>
     </article>
     `,
     methods: {
         getUltimiArticoli: function(){
-            axios.get('./ultimi-articoli.json')
+            axios.get('/api/articoli/:n')
               .then(response => {
                 this.datiArticoli = response.data
               });
@@ -36,16 +36,16 @@ const Archivio = {
     template:  `
     <h2>Archivio Articoli</h2>
     <article v-for="articolo in datiArticoli">
-        <img v-bind:src="articolo['Immagine']" alt="" />
-        <h3>{{articolo["Titolo"]}}</h3>
-        <p>{{articolo["Autore"]}} - {{articolo["Data"]}}</p>
-        <p>{{articolo["Testo"]}}</p>
+        <img v-bind:src="'/img/'+ articolo['imgarticolo']" alt="" />
+        <h3>{{articolo["titoloarticolo"]}}</h3>
+        <p>{{articolo["nome"]}} - {{articolo["dataarticolo"]}}</p>
+        <p>{{articolo["anteprimaarticolo"]}}</p>
         <a href="#">Leggi tutto</a>
     </article>
     `,
     methods: {
         getArchivioArticoli: function(){
-            axios.get('./archivio-articoli.json')
+            axios.get('/api/articoli')
               .then(response => {
                 this.datiArticoli = response.data
               });
@@ -72,13 +72,13 @@ const Contatti = {
                 <th id="autore">Autore</th><th id="email">Email</th><th id="argomenti">Argomenti</th>
             </tr>
             <tr v-for="autore in autori">
-                <th>{{autore.Autore}}</th><td>{{autore.Email}}</td><td>{{autore.Argomenti}}</td>
+                <th>{{autore.nome}}</th><td>{{autore.username}}</td><td>{{autore.argomenti}}</td>
             </tr>
         </table>
     </section>    `,
     methods: {
         getAutori: function(){
-            axios.get('./autori.json')
+            axios.get('/api/autori')
               .then(response => {
                 this.autori = response.data
               });
