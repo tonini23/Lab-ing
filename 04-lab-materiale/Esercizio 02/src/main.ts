@@ -2,9 +2,23 @@ import { createApp } from "vue"
 import { createRouter, createWebHistory, Router } from "vue-router"
 import App from "./App.vue"
 
+import Home from "./pages/Home.vue"
+import About from "./pages/About.vue"
+import Contatti from "./pages/Contatti.vue"
+import Newsletter from "./pages/Newsletter.vue"
+import NotFound from "./pages/NotFound.vue"
+
+
+
 const router: Router = createRouter({
   history: createWebHistory(),
-  routes: []
+  routes: [
+    { path: "/", component: Home },
+    { path: "/about", component: About },
+    { path: "/contatti", component: Contatti },
+    { path: "/newsletter", component: Newsletter },
+    { path: "/:pathMatch(.*)*", component: NotFound }
+  ]
 })
 
 createApp(App)

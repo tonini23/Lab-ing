@@ -1,7 +1,10 @@
 <template>
   <nav>
     <ul>
-      <li><a href="#">Home</a></li>
+      <router-link to="/">Home</router-link>
+      <router-link to="/about">About</router-link>
+      <router-link to="/contatti">Contatti</router-link>
+      <router-link to="/newsletter">Newsletter</router-link>
     </ul>
   </nav>
 </template>
