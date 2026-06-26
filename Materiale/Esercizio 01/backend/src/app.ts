@@ -2,9 +2,12 @@ import express, { Express } from "express"
 import articoliRouter from "./routes/articoli-router"
 import categorieRouter from "./routes/categorie-router"
 import autoriRouter from "./routes/autori-router"
+import historyApiFallback from "connect-history-api-fallback"
 
 const app: Express = express()
 const port: number = 3000
+
+app.use(historyApiFallback())
 
 app.use(express.static("dist-frontend"))
 app.use(express.static("public"))
