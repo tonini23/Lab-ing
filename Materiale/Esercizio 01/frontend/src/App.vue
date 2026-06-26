@@ -37,3 +37,10 @@
     <p>Fondamenti di Sistemi Web - A.A. 2021/2022</p>
   </footer>
 </template>
+
+<style scoped>
+  .router-link-exact-active {
+    color: rgb(219, 69, 83);
+    background-color: rgb(255, 255, 255);
+  }
+</style>

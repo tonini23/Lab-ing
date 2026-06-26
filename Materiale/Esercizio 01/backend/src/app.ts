@@ -6,6 +6,7 @@ import autoriRouter from "./routes/autori-router"
 const app: Express = express()
 const port: number = 3000
 
+app.use(express.static("dist-frontend"))
 app.use(express.static("public"))
 
 app.use(articoliRouter)
