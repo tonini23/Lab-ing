@@ -33,7 +33,7 @@ export default defineComponent({
         </tr>
       </thead>
       <tr v-for="autore in autori">
-        <th>{{autore.nome}}</th>
+        <th><a :href="`/autore/${autore.idautore}`">{{autore.nome}}</a></th>
         <td>{{autore.username}}</td>
         <td>{{autore.argomenti}}</td>
       </tr> 

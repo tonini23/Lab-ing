@@ -28,6 +28,6 @@ export default defineComponent({
     <h3>{{articolo.titoloarticolo}}</h3>
     <p>{{articolo.nome}} - {{articolo.dataarticolo.slice(0, 10)}}</p>
     <p>{{articolo.anteprimaarticolo}}</p>
-    <a href="#">Leggi tutto</a>
+    <a :href="`/articolo/${articolo.idarticolo}`">Leggi tutto</a>
   </article> 
 </template>
