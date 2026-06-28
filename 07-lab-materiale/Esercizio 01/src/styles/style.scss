@@ -1,0 +1,260 @@
+@use "./variables" as *;
+@use "./mixins" as *;
+
+
+body, header, h1, h2, h5, ul{
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: $color-whiteBack;
+}
+
+div#app {
+  & > header, & > footer {
+  background-color: $color-darkGray;
+  color: $color-white;
+  text-align: center;
+  padding: 20px 0;
+  }
+
+  & > h1 {
+    font-family: $font-header;
+  }
+
+  & > footer > p {
+  font-family: $font-header;
+}
+}
+
+nav {
+  margin: 0 5%;
+
+  ul {
+    list-style: none;
+  }
+
+  ul li {
+  display: inline-block;
+  width: 45%;
+  margin: 10px 0 0;
+  text-align: center;
+  background-color: $color-darkGray;
+  }
+
+  ul li:nth-child(odd) {
+    margin-right: 10%;
+  }
+
+  ul li a {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    padding: 5px 0;
+    color: $color-white;
+    font-family: $font-normal;
+    text-decoration: none;
+  }
+
+  ul li:hover a {
+    color: $color-red;
+  }
+}
+
+main {
+  margin: 20px 5% 0;
+
+  & > h2 {
+    text-align: center;
+    height: 50px;
+    font-family: $font-normal;
+  }
+
+  & > section {
+  padding: 20px 5%;
+  }
+}
+
+article, form, main > section {
+  background-color: $color-white;
+  border: $border;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+}
+
+article {
+  text-align: center;
+
+  & > img {
+    max-height: 200px;
+    max-width: 100%;
+  }
+
+  & > h3, & > p {
+   padding: 0 5%;
+   font-family: $font-normal;  
+   text-align: left;
+  }
+
+  & > p {
+    font-size: 12px;
+  }
+
+  & > a:hover{
+    color: $color-red;
+  }
+}
+
+article > a, form ul li input[type="submit"] {
+  padding: 5px 10px;
+  background-color: $color-lightGray;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+  color: $color-black;
+  font-family: $font-normal;
+}
+
+form h2, main > section > h2 {
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  margin: 0 0 20px;
+}
+
+form {
+  padding: 20px 5%;
+
+  ul {
+    list-style: none;
+    width: 80%;
+    margin: 0 10%;
+  }
+
+  ul, li {
+    margin-bottom: 20px;
+  }
+
+  ul li:last-child {
+    text-align: right;
+  }
+
+  ul li label {
+  display: inline-block;
+  width: 50%;
+  }
+
+  ul li input:not([type="submit"]) {
+  width: 50%;
+  box-sizing: border-box;
+  }
+
+  form ul li input[type="submit"]:hover {
+  cursor: pointer;
+  color: $color-red;
+  }
+}
+
+table {
+  width: 100%;
+  border-spacing: 0;
+  border-collapse: collapse;
+  
+  th {
+  font-family: $font-normal;
+  }
+
+  td, th {
+  border: $table-border;
+  padding: 5px 0;
+  }
+
+  td {
+  text-align: center;
+  }
+}
+
+aside {
+  margin: 0 5% 20px;
+  background-color: $color-white;
+  border: $border;
+  box-sizing: border-box;
+
+  & > section {
+  padding: 20px 5%;
+  }
+
+  & > section > h2 {
+     font: bold 16px $font-normal;
+  margin: 0 0 15px;
+  }
+
+  & > section > ul {
+  list-style: none;
+  }
+
+  & > section > ul > li {
+  margin-bottom: 10px;
+  }
+
+  & > section > ul > li > img {
+  width: 50px;
+  float: left;
+  margin-right: 5px;
+  }
+
+  & > section > ul > li > a {
+    font: bold 12px $font-normal;
+    text-decoration: none;
+  }
+
+  & > section > ul > li > a:visited {
+    color: $color-black;
+  }
+
+  & > section > ul > li > a:hover {
+    color: $color-red;
+  }
+}
+
+.router-link-exact-active {
+  @include color($color-white, $color-black);
+}
+
+@include desktop {
+  nav {
+    margin: 0 10%;
+
+    ul li {
+      width: 19%;
+    }
+
+    ul li:not(:last-child) {
+    margin-right: 8%;
+    }
+  }
+
+  main, aside {
+    display: inline-block;
+    vertical-align: top;
+  }
+
+  main {
+    width: 50%;
+    margin: 20px 5% 0 10%;
+  }
+
+  aside {
+    width: 25%;
+    margin: 70px 10% 20px 0;
+  }
+
+  form ul {
+    width: 50%;
+    margin: 0 25%;
+  }
+
+  table {
+    width: 80%;
+    margin: 0 10%;
+  }
+}

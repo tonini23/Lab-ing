@@ -39,5 +39,5 @@
 </template>
 
 <style lang="scss">
-@import "./style.css";
+@use "./styles/style.scss";
 </style>
