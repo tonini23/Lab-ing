@@ -42,6 +42,7 @@ export const getUser = (req: Request, res: Response) => {
 
   try{
   const user = jwt.verify(accessToken, JWT_SECRET) as User
+  return user
   } catch{
     return null
   }

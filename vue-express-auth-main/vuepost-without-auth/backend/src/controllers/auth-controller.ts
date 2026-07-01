@@ -1,11 +1,17 @@
 import { Request, Response } from "express"
-import { setUser, User } from "../utils/auth"
+import { getUser, setUser, unsetUser, User } from "../utils/auth"
 import { connection } from "../utils/db"
 import bycrypt from "bcrypt"
 
 export const register = async (req: Request, res: Response) => {
-  // Estrae username e password dal body della richiesta
 
+  const u = getUser(req, res)
+  if(u){
+    res.status(401).send("Questa operazione richiede il logout")
+    return
+  }
+
+  // Estrae username e password dal body della richiesta
   const { username, password } = req.body
 
   const [rows] = await connection.execute(`SELECT username FROM users WHERE 
@@ -34,6 +40,13 @@ export const register = async (req: Request, res: Response) => {
 }
 
 export const login = async (req: Request, res: Response) => {
+
+  const u = getUser(req, res)
+  if(!u){
+    res.status(401).send("Questa operazione richiede l'autenticazione")
+    return
+  }
+
   // Estrae username e password dal body della richiesta
   const { username, password } = req.body
 
@@ -57,13 +70,22 @@ export const login = async (req: Request, res: Response) => {
 
   delete user.password
 
+  setUser(req, res, user)
+
   res.json({ message: "Login effettuato con successo" })
 }
 
 export const logout = async (req: Request, res: Response) => {
+  const user = getUser(req, res)
+  if(!user){
+    res.status(401).send("Questa operazione richiede l'autenticazione")
+    return
+  }
+  unsetUser(req, res)
   res.json({ message: "Logout effettuato con successo" })
 }
 
 export const getProfile = async (req: Request, res: Response) => {
-  res.json({})
+  const user = getUser(req, res)
+  res.json(user)
 }
